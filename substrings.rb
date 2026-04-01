@@ -3,15 +3,13 @@ def substrings(string, dictionary)
   # check if string matches current dictionary item
   # increment counter
 
-  counts = dictionary.reduce(Hash.new(0)) do |hash, entry|
-    if string.include?(entry)
-      scanned = string.scan(entry)
+  dictionary.reduce(Hash.new(0)) do |hash, entry|
+    if string.downcase.include?(entry.downcase)
+      scanned = string.downcase.scan(entry.downcase)
       hash[entry] = scanned.length
     end
     hash
   end
-
-  counts
 end
 
 # test case
